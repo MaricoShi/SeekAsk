@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Web;
+using System.Web.Mvc;
+using Szx.WeiXin.Api;
+using Szx.WeiXin.Api.Domain;
+using Szx.WeiXin.Api.Models;
+
+using Seekask.Data.Models;
+using System.Net;
+
+namespace Seekask.UI.Areas.Wx.Controllers
+{
+    public class WxHomeController : Controller
+    {
+        // GET: Wx/Home
+
+        public ActionResult BindWeiXinByAccount(string wxUserID, string wxUserPwd)
+        {
+            using (SmartBindUtil smartBind = new SmartBindUtil(wxUserID, wxUserPwd))
+            {
+                //登录成功后，在开发者中心获取开发者信息
+                WechatDevInfo devInfo = smartBind.GetWechatDev();
+
+                WechatAccountInfo accountInfo = smartBind.GetAccount();
+                //无法获取用户信息，结束操作并跳出
+                if (accountInfo == null) return Content("无法获取用户信息，结束操作并跳出");
+
+                Weixin_Sys_Info info = null;
+
+                using (SeekAskContext context = new SeekAskContext())
+                {
+                    info = context.Weixin_Sys_Info.FirstOrDefault(p => p.Wx_AccountId == accountInfo.AccountId
+                        && p.Wx_WechatNumber == accountInfo.WechatNumber
+                        && p.Wx_AppId == devInfo.AppId);
+
+                    if (info == null) {
+                        info = new Weixin_Sys_Info();
+                        info = context.Weixin_Sys_Info.Add(info);
+                    }
+                    
+                    info.Wx_AccountId = accountInfo.AccountId;
+                    info.Wx_AccountName = accountInfo.AccountName;
+                    info.Wx_WechatNumber = accountInfo.WechatNumber;
+                    info.Wx_WechatType = (int)accountInfo.WechatType;
+                    info.Wx_Introduces = accountInfo.Introduces;
+                    info.Wx_Authenticate = (int)accountInfo.Authenticate;
+                    info.Wx_PlaceAddress = accountInfo.PlaceAddress;
+                    info.Wx_SubjectInfo = accountInfo.SubjectInfo;
+                    info.Wx_LoginEmail = accountInfo.LoginEmail;
+                    info.Wx_AppId = devInfo.AppId;
+                    info.Wx_AppSecret = devInfo.AppSecret;
+                    info.Wx_URL = devInfo.URL;
+                    info.Wx_EncodingAESKey = devInfo.EncodingAESKey;
+                    info.Wx_EncodingAESType = (int)devInfo.EncodingAESType;
+                    info.Is_Deleted = false;
+                    
+                    context.SaveChanges();
+
+                    #region 
+                    //下载头像
+                    if (!string.IsNullOrWhiteSpace(accountInfo.HeadImage))
+                    {
+                        string fileName = "weixinImg/headImg_" + info.WxId + ".jpg";
+                        int downStatus = smartBind.DownloadImg(accountInfo.HeadImage, Server.MapPath("~/") + fileName, true);
+                        if (downStatus == (int)HttpStatusCode.OK)
+                        {
+                            info.Wx_HeadImage = "/" + fileName;
+                        }
+                    }
+                    //下载二维码
+                    if (!string.IsNullOrWhiteSpace(accountInfo.HeadImage))
+                    {
+                        string fileName = "weixinImg/qrCode_" + info.WxId + ".jpg";
+                        int downStatus = smartBind.DownloadImg(accountInfo.QRCode, Server.MapPath("~/") + fileName, true);
+                        if (downStatus == (int)HttpStatusCode.OK)
+                        {
+                            info.Wx_QRCode = "/" + fileName;
+                        }
+                    }
+
+                    info.Wx_URL = "http://sjianshang.xicp.net/seekask.ui/weixin?appid=" + info.WxId;
+                    info.Wx_Token = WeChatTools.GetRandomStr(20);
+                    info.Wx_EncodingAESKey = WeChatTools.GetRandomStr(43);
+                    info.Wx_EncodingAESType = 2;
+
+                    context.SaveChanges();
+
+                    //设置启用开发模式
+                    int status = smartBind.EnabledDev(1, 2);
+                    //启用开发模式失败，结束操作并跳出
+                    if (status != 0) return Content("启用开发模式失败，结束操作并跳出");
+                    // 验证服务器接口回调，此处修改服务器配置中的URL和Token
+                    status = smartBind.SetDevServiceUrl(
+                        info.Wx_URL,
+                        info.Wx_Token,
+                        info.Wx_EncodingAESKey,
+                        info.Wx_EncodingAESType.ToString());
+                    
+                    if (status == 0)
+                    {
+
+                        return Content("修改成功！");
+                    }
+
+                    #endregion
+                }
+
+            };
+            return Content("异常！");
+        }
+    }
+}
