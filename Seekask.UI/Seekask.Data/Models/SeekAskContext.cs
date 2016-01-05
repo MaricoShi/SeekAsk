@@ -8,12 +8,23 @@ namespace Seekask.Data.Models
     {
         static SeekAskContext()
         {
-            Database.SetInitializer<SeekAskContext>(null);
+            //无初始化行为
+            //Database.SetInitializer<SeekAskContext>(null);  
+
+            //没有数据库时创建 默认行为
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SeekAskContext>());
+
+            //模型改变时，自动重新创建一个新的数据库
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SeekAskContext>());
+            //每次运行时都重新生成数据库
+            //Database.SetInitializer(new DropCreateDatabaseAlways<SeekAskContext>());
+            
         }
 
         public SeekAskContext()
             : base("Name=SeekAskContext")
         {
+            
         }
         
         public DbSet<Weixin_Msg_Request> Weixin_Msg_Request { get; set; }
