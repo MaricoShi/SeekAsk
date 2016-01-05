@@ -80,6 +80,7 @@ namespace Seekask.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Weixin_Sys_Info");
             this.Property(t => t.WxId).HasColumnName("WxId");
+            this.Property(t => t.Wx_Status).HasColumnName("Wx_Status");
             this.Property(t => t.Wx_AccountId).HasColumnName("Wx_AccountId");
             this.Property(t => t.Wx_HeadImage).HasColumnName("Wx_HeadImage");
             this.Property(t => t.Wx_QRCode).HasColumnName("Wx_QRCode");

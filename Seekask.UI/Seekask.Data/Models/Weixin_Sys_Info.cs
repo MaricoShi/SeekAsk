@@ -11,6 +11,7 @@ namespace Seekask.Data.Models
         }
 
         public int WxId { get; set; }
+        public Nullable<int> Wx_Status { get; set; }
         public string Wx_AccountId { get; set; }
         public string Wx_HeadImage { get; set; }
         public string Wx_QRCode { get; set; }
