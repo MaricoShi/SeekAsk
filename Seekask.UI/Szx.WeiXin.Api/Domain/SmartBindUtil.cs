@@ -132,7 +132,7 @@ namespace Szx.WeiXin.Api.Domain
 
                 List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
                 paramList.Add(new KeyValuePair<string, string>("username", this.loginUser));
-                paramList.Add(new KeyValuePair<string, string>("pwd", Md5Helper.Md5Hex(this.loginPwd)));
+                paramList.Add(new KeyValuePair<string, string>("pwd", this.loginPwd));
                 //paramList.Add(new KeyValuePair<string, string>("pwd", "d3d40c3dd1acd940d4a98d16d75897fe"));
                 paramList.Add(new KeyValuePair<string, string>("imgcode", ""));
                 paramList.Add(new KeyValuePair<string, string>("f", "json"));
