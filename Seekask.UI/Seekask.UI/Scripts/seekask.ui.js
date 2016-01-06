@@ -80,5 +80,77 @@ $(document).ready(function () {
     $('.tip-top').tooltip({ placement: 'top' });
     $('.tip-bottom').tooltip({ placement: 'bottom' });
 
-
 });
+
+
+(function ($) {
+    function WxLoading(options) {
+        var _that = this;
+        var opts = {
+            content: "loading..."
+        };
+
+        if (typeof options == "string") {
+            opts["content"] = options;
+        }
+
+        if ($('#wxloading', $(_that)).length == 0) {
+            $('<div>', { id: 'wxloading' })
+                .append(
+                    $('<div>', { 'class': 'wx_loading_inner' })
+                        .append($('<img>', { 'class': 'wx_loading_icon' }))
+                        .append($('<span>').text(opts["content"] == null
+                        ? "loading..." : opts["content"]))
+                )
+                .appendTo($(_that));
+        } else {
+            $('#wxloading .wx_loading_inner span', $(_that)).text(opts["content"] == null
+                        ? "loading..." : opts["content"]);
+            $('#wxloading', $(_that)).show();
+        }
+    }
+
+    function UnWxLoading() {
+        var _that = this;
+        $("#wxloading", $(_that)).remove();
+    }
+
+    function SpinnerContainer(options) {
+        var _that = this;
+        var opts = {
+            content: "loading...",
+            spinnerSize: "20px",
+            containerSize: "6px"
+        };
+
+        if (typeof options == "string") {
+            options = $.parseJSON(options);
+        }
+
+        var opts = $.extend({}, opts, options);
+
+        var ctrCss = { 'width': opts.containerSize, 'height': opts.containerSize }
+
+        var $spn_ctr = $('<div>', { 'class': 'spinner-container' })
+            .append($('<div>', { 'class': 'circle1' }).css(ctrCss))
+            .append($('<div>', { 'class': 'circle2' }).css(ctrCss))
+            .append($('<div>', { 'class': 'circle3' }).css(ctrCss))
+            .append($('<div>', { 'class': 'circle4' }).css(ctrCss));
+
+        $('<div>', { 'class': 'spinner' }).css({ 'width': opts.spinnerSize, 'height': opts.spinnerSize })
+            .append($spn_ctr.clone(true).addClass("container1"))
+            .append($spn_ctr.clone(true).addClass("container2"))
+            .append($spn_ctr.clone(true).addClass("container3"))
+            .appendTo($(_that));
+    }
+
+    $.fn.WxLoading = WxLoading;
+    $.fn.UnWxLoading = UnWxLoading;
+
+    $.fn.SpinnerContainer = SpinnerContainer;
+
+    $.extend({
+
+    });
+
+})(jQuery);

@@ -183,7 +183,7 @@
                     <span class="fa"><i class="fa fa-info-circle"></i></span>
                     <h5>微信公众号智能绑定</h5>
                 </div>
-                <div class="widget-content nopadding" >
+                <div class="widget-content nopadding">
                     <form class="form-horizontal" method="post" id="buildwechat"
                           action="/manage/admin.php?c=user.add_submit" novalidate="novalidate">
                         <div class="control-group">
@@ -202,16 +202,43 @@
                             </label>
                             <div class="controls">
                                 <input type="password" value="" name="Wx_UserPwd" id="Wx_UserPwd" class="form-control" style="width:260px;">
-                                &nbsp;帐号及密码仅限智能绑定使用，不保存！不泄漏！不放心？点此 
+                                &nbsp;帐号及密码仅限智能绑定使用，不保存！不泄漏！不放心？点此
                                 <a href="https://mp.weixin.qq.com" target="_blank">手动绑定</a>
                             </div>
                         </div>
                         <div class="form-actions">
                             <label class="control-label"></label>
-                            <button type="button" id="btnAutoAddSubmit" class="btn btn-success"> 自动绑定 </button>
-                            <button type="button" style="margin-left:30px;" class="btn btn-default"> 手动绑定 </button>
+                            <a class="btn btn-success" href="javascript:;" style="margin-left:30px;"
+                               id="set_auto_btn">&nbsp;自动绑定&nbsp;</a>
+                            <a class="btn btn-default" href="javascript:;" style="margin-left:30px;"
+                               id="set_hand_btn">&nbsp;手动绑定&nbsp;</a>
                         </div>
                     </form>
+
+                    <div id="error_ex" style="min-height:200px;display:none" class="text-center">
+                        <div id="spinner">
+                            <p style="font-size:15px;line-height:30px;margin-top:20px;">智能绑定处理中，即将进入全新的微世界</p>
+                            <div class="iconLoading" style="width:60px;height:60px;margin:35px auto;"></div>
+                        </div>
+                        <div id="step_success_icon" style="display:none;margin-top:20px;">
+                            <span class="fa fa-check-circle" style="font-size:80px;color:green"></span>
+                        </div>
+                        <div id="step_fail_icon" style="display:none;margin-top:20px;">
+                            <span class="fa fa-times-circle" style="font-size:80px;color:red"></span>
+                        </div>
+                        <p style="font-size:15px;padding:15px 0px 5px 0px;display:none;" id="step_msg">
+                            抱歉，SeekAsk接口对接失败，请改用手工绑定，或
+                            <a href="javascript:;" target="_blank">联系客服人员</a>
+                        </p>
+                        <a class="btn btn-warning" style="width: 200px;line-height:26px;height:35px;display:none;" 
+                           href="javascript:;" id="step_fail_btn">手工绑定</a>
+                        <a class="btn btn-success" style="width: 200px;line-height:26px;height:35px;display:none;" 
+                           href="javascript:;" id="step_ok_btn">开启微世界</a>
+                        <a class="btn btn-warning" style="width: 200px;line-height:26px;height:35px;display:none;
+                            margin-left:30px;" href="javascript:;" 
+                           id="step_back_btn">返  回</a>
+                        <div style="height:10px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,13 +251,28 @@
     <script src="~/Scripts/jquery.md5.js"></script>
 
     <script>
-        $('#btnAutoAddSubmit').click(function () {
+
+
+        $('#set_auto_btn').click(function () {
+            //$("body").WxLoading("正在加载中...");
+            $('#buildwechat').hide();
+            $('#error_ex').show();
+            $('#error_ex .iconLoading').SpinnerContainer({
+                spinnerSize: '55px',
+                containerSize: '14px'
+            });
+            //$('#step_success_icon').show();
+            //$('#step_msg').show();
+            ////$('#step_fail_btn').show();
+            //$('#step_ok_btn').show();
+            //$('#step_back_btn').show();
+            //return;
             $.ajax({
                 type: "post",
                 url: "BindWeiXinByAccount",
                 data: { wxUserID: $('#Wx_UserName').val(), wxUserPwd: $.md5($('#Wx_UserPwd').val()) },
                 success: function (xhrData) {
-                    
+
                 },
                 error: function (errData) {
                     alert(errData.responseText);

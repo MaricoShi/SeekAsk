@@ -44,6 +44,7 @@ namespace Seekask.UI.Areas.Wx.Controllers
                     {
                         devInfo.AppSecret = devInfo.AppSecret.Replace("重置", "").Trim();
                     }
+                    return Content("结束操作并跳出");
 
                     Weixin_Sys_Info info = null;
 
