@@ -254,29 +254,35 @@
 
 
         $('#set_auto_btn').click(function () {
-            //$("body").WxLoading("正在加载中...");
             $('#buildwechat').hide();
             $('#error_ex').show();
             $('#error_ex .iconLoading').SpinnerContainer({
                 spinnerSize: '55px',
                 containerSize: '14px'
             });
-            //$('#step_success_icon').show();
-            //$('#step_msg').show();
-            ////$('#step_fail_btn').show();
-            //$('#step_ok_btn').show();
-            //$('#step_back_btn').show();
-            //return;
             $.ajax({
                 type: "post",
                 url: "BindWeiXinByAccount",
                 data: { wxUserID: $('#Wx_UserName').val(), wxUserPwd: $.md5($('#Wx_UserPwd').val()) },
                 success: function (xhrData) {
+                    $('#spinner').hide();
 
+                    $('#step_success_icon').show();
+                    var startWx = '<a href="javascript:;" target="_blank">开启微世界</a>';
+                    $('#step_msg').show().html("成功绑定微信号，点击" + startWx);
+                    $('#step_ok_btn').show();
+                    $('#step_back_btn').show();
                 },
                 error: function (errData) {
-                    alert(errData.responseText);
+                    $('#spinner').hide();
+
+                    $('#step_fail_icon').show();
+                    $('#step_msg').show();
+                    $('#step_fail_btn').show();
+                    //alert(errData.responseText);
                 }
+            }).complete(function () {
+                $('#spinner').hide();
             });
         });
     </script>
