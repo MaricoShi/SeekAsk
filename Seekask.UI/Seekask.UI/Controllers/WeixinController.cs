@@ -32,6 +32,13 @@ namespace Seekask.UI.Controllers
 
                 if (CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, wxInfo.Wx_Token))
                 {
+                    try
+                    {
+                        wxInfo.Wx_Status = 1;   //状态改为已对接
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+
                     return Content(echostr); //返回随机字符串则表示验证通过
                 }
                 else

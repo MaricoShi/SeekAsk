@@ -194,10 +194,14 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Areas\Wx\Views\web.config" />
+    <Content Include="Areas\Wx\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Wx\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Wx\Views\WxHome\AutoAdd.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.md5.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -231,8 +235,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Wx\Models\" />
-    <Folder Include="Areas\Wx\Views\Shared\" />
-    <Folder Include="Areas\Wx\Views\WxHome\" />
     <Folder Include="Views\Weixin\" />
   </ItemGroup>
   <ItemGroup>
