@@ -3,7 +3,7 @@ $(document).ready(function () {
     fnWindowsResize();
     function fnWindowsResize() {
         $('.container-fluid', $('.sa_content'))
-            .height($(window).height() - 87 - $('.fixed_bottom').outerHeight());
+            .height($(window).height() - 77 - $('.fixed_bottom').outerHeight());
         $('.sa_content').height($('.container-fluid', $('.sa_content')).height()+10 + $('.fixed_bottom').outerHeight());
     }
     $(window).resize(function () {
