@@ -19,6 +19,11 @@ namespace Seekask.UI.Controllers
             return View();
         }
 
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
         public ActionResult Edit() {
 
             return View();

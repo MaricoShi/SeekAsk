@@ -266,7 +266,7 @@
                 data: { wxUserID: $('#Wx_UserName').val(), wxUserPwd: $.md5($('#Wx_UserPwd').val()) },
                 success: function (xhrData) {
                     $('#spinner').hide();
-                    if (!xhrData && xhrData.ErrCode == 1) {
+                    if (xhrData != null && xhrData.ErrCode == 1) {
                         $('#step_success_icon').show();
                         var startWx = '<a href="javascript:;" target="_blank">开启微世界</a>';
                         $('#step_msg').show().html("成功绑定微信号，点击" + startWx);
