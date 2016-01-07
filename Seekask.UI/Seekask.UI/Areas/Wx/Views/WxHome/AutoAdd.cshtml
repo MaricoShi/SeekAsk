@@ -266,12 +266,17 @@
                 data: { wxUserID: $('#Wx_UserName').val(), wxUserPwd: $.md5($('#Wx_UserPwd').val()) },
                 success: function (xhrData) {
                     $('#spinner').hide();
-
-                    $('#step_success_icon').show();
-                    var startWx = '<a href="javascript:;" target="_blank">开启微世界</a>';
-                    $('#step_msg').show().html("成功绑定微信号，点击" + startWx);
-                    $('#step_ok_btn').show();
-                    $('#step_back_btn').show();
+                    if (!xhrData && xhrData.ErrCode == 1) {
+                        $('#step_success_icon').show();
+                        var startWx = '<a href="javascript:;" target="_blank">开启微世界</a>';
+                        $('#step_msg').show().html("成功绑定微信号，点击" + startWx);
+                        $('#step_ok_btn').show();
+                        $('#step_back_btn').show();
+                    } else {
+                        $('#step_fail_icon').show();
+                        $('#step_msg').show();
+                        $('#step_fail_btn').show();
+                    }
                 },
                 error: function (errData) {
                     $('#spinner').hide();

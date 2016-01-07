@@ -10,6 +10,8 @@ using Szx.WeiXin.Api.Models;
 
 using Seekask.Data.Models;
 using System.Net;
+using Seekask.UI.Areas.Wx.Models;
+using Seekask.UI.Help;
 
 namespace Seekask.UI.Areas.Wx.Controllers
 {
@@ -29,6 +31,7 @@ namespace Seekask.UI.Areas.Wx.Controllers
         [HttpPost]
         public ActionResult BindWeiXinByAccount(string wxUserID, string wxUserPwd)
         {
+            StatusBackModel errBack = new StatusBackModel();
             try
             {
                 using (SmartBindUtil smartBind = new SmartBindUtil(wxUserID, wxUserPwd))
@@ -38,11 +41,16 @@ namespace Seekask.UI.Areas.Wx.Controllers
 
                     WechatAccountInfo accountInfo = smartBind.GetAccount();
                     //无法获取用户信息，结束操作并跳出
-                    if (accountInfo == null) return Content("无法获取用户信息，结束操作并跳出");
+                    if (accountInfo == null) {
+                        errBack.ErrMsg = "无法获取用户信息，结束操作并跳出";
+                        return Json(errBack); 
+                    }
 
                     if (devInfo != null && !string.IsNullOrWhiteSpace(devInfo.AppSecret))
                     {
                         devInfo.AppSecret = devInfo.AppSecret.Replace("重置", "").Trim();
+                        if (devInfo.AppSecret.Contains("显示密钥"))
+                            devInfo.AppSecret = null;
                     }
 
                     Weixin_Sys_Info info = null;
@@ -57,8 +65,13 @@ namespace Seekask.UI.Areas.Wx.Controllers
                         if (info == null)
                         {
                             info = new Weixin_Sys_Info();
+                            info.Create_Id = "Sys";
+                            info.Create_Name = "系统管理员";
+                            info.Create_IP = WebSiteTools.GetRequestIP();
+                            info.Create_Time = DateTime.Now;
                             info = context.Weixin_Sys_Info.Add(info);
                         }
+                        info.Wx_Status = 0;
 
                         info.Wx_AccountId = accountInfo.AccountId;
                         info.Wx_AccountName = accountInfo.AccountName;
@@ -74,6 +87,11 @@ namespace Seekask.UI.Areas.Wx.Controllers
                         info.Wx_URL = devInfo.URL;
                         info.Wx_EncodingAESKey = devInfo.EncodingAESKey;
                         info.Wx_EncodingAESType = (int)devInfo.EncodingAESType;
+
+                        info.Modify_Id = "Sys";
+                        info.Modify_Name = "系统管理员";
+                        info.Modify_IP = WebSiteTools.GetRequestIP();
+                        info.Modify_Time = DateTime.Now;
                         info.Is_Deleted = false;
 
                         context.SaveChanges();
@@ -119,23 +137,26 @@ namespace Seekask.UI.Areas.Wx.Controllers
                             info.Wx_EncodingAESKey,
                             info.Wx_EncodingAESType.ToString());
 
+                        #endregion
+
+                        errBack.BackData = info.WxId;
                         if (status == 0)
                         {
-
-                            return Content("修改成功！");
-                        }
-
-                        #endregion
+                            errBack.ErrCode = 1;
+                            errBack.ErrMsg = "接入成功！";
+                        }else
+                            errBack.ErrMsg = "用户信息获取成功，接入失败！";
                     }
 
                 };
             }
             catch (Exception)
             {
-                
+                errBack.ErrMsg = "执行异常";
             }
             
-            return Content("异常！");
+            return Json(errBack);
         }
+
     }
 }
