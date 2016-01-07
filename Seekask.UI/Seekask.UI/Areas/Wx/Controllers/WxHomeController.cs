@@ -150,7 +150,7 @@ namespace Seekask.UI.Areas.Wx.Controllers
 
                 };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 errBack.ErrMsg = "执行异常";
             }

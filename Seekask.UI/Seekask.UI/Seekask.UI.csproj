@@ -195,7 +195,9 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Areas\Wx\Views\web.config" />
+    <Content Include="Areas\Wx\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Wx\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Wx\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Wx\Views\WxHome\AutoAdd.cshtml" />
