@@ -9,10 +9,10 @@ namespace Seekask.Data.Models
         static SeekAskContext()
         {
             //无初始化行为
-            //Database.SetInitializer<SeekAskContext>(null);  
+            Database.SetInitializer<SeekAskContext>(null);  
 
             //没有数据库时创建 默认行为
-            Database.SetInitializer(new CreateDatabaseIfNotExists<SeekAskContext>());
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<SeekAskContext>());
 
             //模型改变时，自动重新创建一个新的数据库
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SeekAskContext>());
