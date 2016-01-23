@@ -1,4 +1,5 @@
 ﻿using Seekask.Data.Models;
+using Seekask.UI.Help;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP.MvcExtension;
@@ -30,7 +31,33 @@ namespace Seekask.UI.Controllers
 
                 if (wxInfo == null) return Content("平台未新增管理代号(" + appId + ")！");
 
-                if (CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, wxInfo.Wx_Token))
+                bool isCheckSignature = CheckSignature.Check(postModel.Signature, postModel.Timestamp, 
+                    postModel.Nonce, wxInfo.Wx_Token);
+
+                #region 记录接入日志
+                try
+                {
+                    Szx_Sys_Log log = new Szx_Sys_Log()
+                    {
+                        LogID = Guid.NewGuid().ToString("N"),
+                        LogName = "微信接入验证",
+                        Source = "01",
+                        LevelCode = 0,
+                        RequestUrl = HttpContext.Request.Url.ToString(),
+                        LogDate = DateTime.Now,
+                        Message = "验证结果:" + isCheckSignature,
+                        Create_Id = "wxjk",
+                        Create_Name = "微信接口",
+                        Create_Time = DateTime.Now,
+                        Create_IP = WebSiteTools.GetRequestIP()
+                    };
+                    context.Szx_Sys_Log.Add(log);
+                    context.SaveChanges();
+                }
+                catch (Exception) { }
+                #endregion
+
+                if (isCheckSignature)
                 {
                     try
                     {
