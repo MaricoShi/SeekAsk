@@ -5,11 +5,6 @@ namespace Seekask.Data.Models
 {
     public partial class Weixin_Sys_Info
     {
-        public Weixin_Sys_Info()
-        {
-            
-        }
-
         public int WxId { get; set; }
         public Nullable<int> Wx_Status { get; set; }
         public string Wx_AccountId { get; set; }
@@ -42,6 +37,5 @@ namespace Seekask.Data.Models
         public Nullable<System.DateTime> Modify_Time { get; set; }
         public string Modify_IP { get; set; }
         public bool Is_Deleted { get; set; }
-
     }
 }

@@ -13,6 +13,5 @@ namespace Seekask.Data.Models
         public string Encrypt { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public string XmlDocument { get; set; }
-
     }
 }

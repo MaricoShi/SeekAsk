@@ -50,9 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Mapping\Szx_Sys_LogMap.cs" />
     <Compile Include="Models\Mapping\Weixin_Msg_RequestMap.cs" />
     <Compile Include="Models\Mapping\Weixin_Sys_InfoMap.cs" />
     <Compile Include="Models\SeekAskContext.cs" />
+    <Compile Include="Models\Szx_Sys_Log.cs" />
     <Compile Include="Models\Weixin_Msg_Request.cs" />
     <Compile Include="Models\Weixin_Sys_Info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

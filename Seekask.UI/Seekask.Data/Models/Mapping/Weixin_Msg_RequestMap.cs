@@ -40,9 +40,6 @@ namespace Seekask.Data.Models.Mapping
             this.Property(t => t.Encrypt).HasColumnName("Encrypt");
             this.Property(t => t.CreateTime).HasColumnName("CreateTime");
             this.Property(t => t.XmlDocument).HasColumnName("XmlDocument");
-
-
-
         }
     }
 }
