@@ -201,6 +201,7 @@
     <Content Include="Areas\Wx\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Wx\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Wx\Views\WxHome\AutoAdd.cshtml" />
+    <None Include="Properties\PublishProfiles\Seekask.UI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
