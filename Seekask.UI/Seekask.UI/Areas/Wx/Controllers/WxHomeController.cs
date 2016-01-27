@@ -120,7 +120,7 @@ namespace Seekask.UI.Areas.Wx.Controllers
                         }
 
                         //info.Wx_URL = "http://sjianshang.xicp.net/seekask.ui/weixin?appid=" + info.WxId;
-                        info.Wx_URL = "http://wx.seekask.cn/weixin?appid=" + info.WxId;
+                        info.Wx_URL = "http://www.seekask.cn/weixin?appid=" + info.WxId;
                         info.Wx_Token = WeChatTools.GetRandomStr(20);
                         info.Wx_EncodingAESKey = WeChatTools.GetRandomStr(43);
                         info.Wx_EncodingAESType = 2;
