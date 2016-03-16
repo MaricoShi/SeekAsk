@@ -18,21 +18,28 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
         private string GetWelcomeInfo()
         {
             var version = "2.0.0.1";
-            return string.Format(
-@"欢迎关注【Senparc.Weixin.MP 微信公众平台SDK】，当前运行版本：v{0}。
-您可以发送【文字】【位置】【图片】【语音】等不同类型的信息，查看不同格式的回复。
+            return string.Format(@"欢迎关注【微信公众平台SDK】，当前运行版本：v{0}。
+                您可以发送【文字】【位置】【图片】【语音】等不同类型的信息，查看不同格式的回复。
 
-您也可以直接点击菜单查看各种类型的回复。
-还可以点击菜单体验微信支付。
+                您也可以直接点击菜单查看各种类型的回复。
+                还可以点击菜单体验微信支付。
 
-SDK官方地址：http://weixin.senparc.com
-源代码及Demo下载地址：https://github.com/JeffreySu/WeiXinMPSDK
-Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP
+                ===============
+                更多相关内容，请回复文字：open
+                ", version);
+            return string.Format(@"欢迎关注【微信公众平台SDK】，当前运行版本：v{0}。
+                您可以发送【文字】【位置】【图片】【语音】等不同类型的信息，查看不同格式的回复。
 
-===============
-更多有关第三方开放平台（Senparc.Weixin.Open）的内容，请回复文字：open
-",
-                version);
+                您也可以直接点击菜单查看各种类型的回复。
+                还可以点击菜单体验微信支付。
+
+                SDK官方地址：http://weixin.senparc.com
+                源代码及Demo下载地址：https://github.com/JeffreySu/WeiXinMPSDK
+                Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP
+
+                ===============
+                更多有关第三方开放平台（Senparc.Weixin.Open）的内容，请回复文字：open
+                ", version);
         }
 
         public override IResponseMessageBase OnTextOrEventRequest(RequestMessageText requestMessage)

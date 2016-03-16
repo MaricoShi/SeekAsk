@@ -92,34 +92,6 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
         {
             //TODO:这里的逻辑可以交给Service处理具体信息，参考OnLocationRequest方法或/Service/LocationSercice.cs
 
-            //书中例子
-            //if (requestMessage.Content == "你好")
-            //{
-            //    var responseMessage = base.CreateResponseMessage<ResponseMessageNews>();
-            //    var title = "Title";
-            //    var description = "Description";
-            //    var picUrl = "PicUrl";
-            //    var url = "Url";
-            //    responseMessage.Articles.Add(new Article()
-            //    {
-            //        Title = title,
-            //        Description = description,
-            //        PicUrl = picUrl,
-            //        Url = url
-            //    });
-            //    return responseMessage;
-            //}
-            //else if (requestMessage.Content == "Senparc")
-            //{
-            //    //相似处理逻辑
-            //}
-            //else
-            //{
-            //    //...
-            //}
-
-
-
             //方法一（v0.1），此方法调用太过繁琐，已过时（但仍是所有方法的核心基础），建议使用方法二到四
             //var responseMessage =
             //    ResponseMessageBase.CreateFromRequestMessage(RequestMessage, ResponseMsgType.Text) as
@@ -144,9 +116,9 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
             {
                 responseMessage.Content =
                     @"您正在进行微信内置浏览器约束判断测试。您可以：
-<a href=""http://weixin.senparc.com/FilterTest/"">点击这里</a>进行客户端约束测试（地址：http://weixin.senparc.com/FilterTest/），如果在微信外打开将直接返回文字。
+<a href=""http://weixin.senparc.com/FilterTest/"">点击这里</a>进行客户端约束测试，如果在微信外打开将直接返回文字。
 或：
-<a href=""http://weixin.senparc.com/FilterTest/Redirect"">点击这里</a>进行客户端约束测试（地址：http://weixin.senparc.com/FilterTest/Redirect），如果在微信外打开将重定向一次URL。";
+<a href=""http://weixin.senparc.com/FilterTest/Redirect"">点击这里</a>进行客户端约束测试，如果在微信外打开将重定向一次URL。";
             }
             else if (requestMessage.Content == "托管" || requestMessage.Content == "代理")
             {
@@ -275,7 +247,7 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
                     WeixinContext.ExpireMinutes, WeixinContext.MaxRecordCount);
                 result.AppendLine("\r\n");
                 result.AppendLine(
-                    "您还可以发送【位置】【图片】【语音】【视频】等类型的信息（注意是这几种类型，不是这几个文字），查看不同格式的回复。\r\nSDK官方地址：http://weixin.senparc.com");
+                    "您还可以发送【位置】【图片】【语音】【视频】等类型的信息（注意是这几种类型，不是这几个文字），查看不同格式的回复。");
 
                 responseMessage.Content = result.ToString();
             }
