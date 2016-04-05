@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.Entities.GoogleMap;
 using Senparc.Weixin.MP.Helpers;
+using Senparc.Weixin.MP.Entities.BaiduMap;
 
 namespace Szx.WeiXin.Api
 {
@@ -21,18 +22,30 @@ namespace Szx.WeiXin.Api
         {
             var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
 
-            var markersList = new List<GoogleMapMarkers>();
-            markersList.Add(new GoogleMapMarkers()
+            var markersList = new List<BaiduMarkers>();
+            markersList.Add(new BaiduMarkers()
             {
-                X = requestMessage.Location_X,
-                Y = requestMessage.Location_Y,
+                Longitude = requestMessage.Location_X,
+                Latitude = requestMessage.Location_Y,
                 Color = "red",
                 Label = "S",
-                Size = GoogleMapMarkerSize.Default,
+                Size = BaiduMarkerSize.Default,
             });
-            var mapSize = "480x600";
-            var mapUrl = GoogleMapHelper.GetGoogleStaticMap(19 /*requestMessage.Scale*//*微信和GoogleMap的Scale不一致，这里建议使用固定值*/,
-                                                            markersList, mapSize);
+            var mapUrl = BaiduMapHelper.GetBaiduStaticMap(requestMessage.Location_X, requestMessage.Location_Y, 
+                1, 3, null, 600, 480);
+
+            //var markersList = new List<GoogleMapMarkers>();
+            //markersList.Add(new GoogleMapMarkers()
+            //{
+            //    X = requestMessage.Location_X,
+            //    Y = requestMessage.Location_Y,
+            //    Color = "red",
+            //    Label = "S",
+            //    Size = GoogleMapMarkerSize.Default,
+            //});
+            //var mapSize = "480x600";
+            //var mapUrl = GoogleMapHelper.GetGoogleStaticMap(19 /*requestMessage.Scale*//*微信和GoogleMap的Scale不一致，这里建议使用固定值*/,
+            //                                                markersList, mapSize);
             responseMessage.Articles.Add(new Article() 
             {
                 Description = string.Format("您刚才发送了地理位置信息。Location_X：{0}，Location_Y：{1}，Scale：{2}，标签：{3}",
@@ -44,7 +57,7 @@ namespace Szx.WeiXin.Api
             });
             responseMessage.Articles.Add(new Article()
             {
-                Title = "微信公众平台SDK 官网链接",
+                Title = "微信公众平台SDK 百度地图",
                 Description = "Senparc.Weixin.MK SDK地址",
                 PicUrl = "http://weixin.senparc.com/images/logo.jpg",
                 Url = "http://weixin.senparc.com"
