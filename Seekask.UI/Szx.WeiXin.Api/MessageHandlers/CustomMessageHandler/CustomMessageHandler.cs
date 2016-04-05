@@ -286,14 +286,14 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
                 Title = "您刚才发送了图片信息",
                 Description = "您发送的图片将会显示在边上",
                 PicUrl = requestMessage.PicUrl,
-                Url = "http://weixin.senparc.com"
+                Url = requestMessage.PicUrl
             });
             responseMessage.Articles.Add(new Article()
             {
                 Title = "第二条",
                 Description = "第二条带连接的内容",
                 PicUrl = requestMessage.PicUrl,
-                Url = "http://weixin.senparc.com"
+                Url = requestMessage.PicUrl
             });
 
             return responseMessage;
