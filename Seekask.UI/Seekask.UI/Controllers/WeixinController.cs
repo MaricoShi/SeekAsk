@@ -122,17 +122,24 @@ namespace Seekask.UI.Controllers
                     #region 记录微信操作日志
                     try
                     {
-                        Weixin_Msg_Request msgRequest = new Weixin_Msg_Request();
-                        msgRequest.WxId = wxInfo.WxId;
-                        msgRequest.MsgId = messageHandler.RequestMessage.MsgId.ToString();
-                        msgRequest.MsgType = messageHandler.RequestMessage.MsgType.ToString();
-                        msgRequest.FromUserName = messageHandler.RequestMessage.FromUserName;
-                        msgRequest.ToUserName = messageHandler.RequestMessage.ToUserName;
-                        msgRequest.Encrypt = null;
-                        msgRequest.CreateTime = messageHandler.RequestMessage.CreateTime;
-                        msgRequest.XmlDocument = messageHandler.RequestDocument.ToString();
-                        context.Weixin_Msg_Request.Add(msgRequest);
-                        context.SaveChanges();
+                        if (!messageHandler.CancelExcute)
+                        {
+                            Weixin_Msg_Request msgRequest = new Weixin_Msg_Request();
+                            msgRequest.WxId = wxInfo.WxId;
+                            msgRequest.MsgType = messageHandler.RequestMessage.MsgType.ToString();
+                            if (messageHandler.RequestMessage.MsgType != RequestMsgType.Event)
+                                msgRequest.MsgId = messageHandler.RequestMessage.MsgId.ToString();
+                            else
+                                msgRequest.MsgId = Guid.NewGuid().ToString("N");
+
+                            msgRequest.FromUserName = messageHandler.RequestMessage.FromUserName;
+                            msgRequest.ToUserName = messageHandler.RequestMessage.ToUserName;
+                            msgRequest.Encrypt = null;
+                            msgRequest.CreateTime = messageHandler.RequestMessage.CreateTime;
+                            msgRequest.XmlDocument = messageHandler.RequestDocument.ToString();
+                            context.Weixin_Msg_Request.Add(msgRequest);
+                            context.SaveChanges();
+                        }
                     }
                     catch (Exception) { }
                     #endregion
@@ -141,13 +148,54 @@ namespace Seekask.UI.Controllers
                     //return new FixWeixinBugWeixinResult(messageHandler);//为了解决官方微信5.0软件换行bug暂时添加的方法，平时用下面一个方法即可
                     return new WeixinResult(messageHandler);//v0.8+
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    #region 记录系统日志
+                    try
+                    {
+                        Szx_Sys_Log log = new Szx_Sys_Log()
+                        {
+                            LogID = Guid.NewGuid().ToString("N"),
+                            LogName = "微信消息处理",
+                            Source = "01",
+                            LevelCode = 2,
+                            RequestUrl = HttpContext.Request.Url.ToString(),
+                            LogDate = DateTime.Now,
+                            Message = "处理异常:" + ex.Message,
+                            Create_Id = "wxjk",
+                            Create_Name = "微信接口",
+                            Create_Time = DateTime.Now,
+                            Create_IP = WebSiteTools.GetRequestIP()
+                        };
+                        context.Szx_Sys_Log.Add(log);
+                        context.SaveChanges();
+                    }
+                    catch (Exception) { }
+                    #endregion
                 }
             }
 
             return Content("参数错误！");
         }
+
+        public ActionResult GetToken(string appId, string appSecret)
+        {
+            try
+            {
+                //var result = Senparc.Weixin.MP.CommonAPIs.CommonApi
+                //    .GetToken(appId, appSecret);//AccessTokenContainer.GetTokenResult(appId);
+
+                //也可以直接一步到位：
+                var result = Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer
+                    .TryGetAccessToken(appId, appSecret);
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                //TODO:为简化代码，这里不处理异常（如Token过期）
+                return Json(new { error = "执行过程发生错误！" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

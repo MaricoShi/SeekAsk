@@ -13,6 +13,8 @@ using System.Net;
 using Seekask.UI.Areas.Wx.Models;
 using Seekask.UI.Help;
 
+using Senparc.Weixin.MP.CommonAPIs;
+
 namespace Seekask.UI.Areas.Wx.Controllers
 {
     public class WxHomeController : Controller
@@ -83,7 +85,8 @@ namespace Seekask.UI.Areas.Wx.Controllers
                         info.Wx_SubjectInfo = accountInfo.SubjectInfo;
                         info.Wx_LoginEmail = accountInfo.LoginEmail;
                         info.Wx_AppId = devInfo.AppId;
-                        info.Wx_AppSecret = devInfo.AppSecret;
+                        if (!string.IsNullOrWhiteSpace(devInfo.AppSecret))
+                            info.Wx_AppSecret = devInfo.AppSecret;
                         info.Wx_URL = devInfo.URL;
                         info.Wx_EncodingAESKey = devInfo.EncodingAESKey;
                         info.Wx_EncodingAESType = (int)devInfo.EncodingAESType;
@@ -157,6 +160,15 @@ namespace Seekask.UI.Areas.Wx.Controllers
             }
             
             return Json(errBack);
+        }
+
+        public ActionResult GetUserInfo(string opendId = "ocvtlxMqS5KUWkQ77LIDGKGC7Vas")
+        {
+            var result = AccessTokenContainer
+                    .TryGetAccessToken("wx7a206d7f9cbf4f4f", "1139e29b74b0d7456b0914e9743971d0");
+            Senparc.Weixin.MP.AdvancedAPIs.User.UserInfoJson userInfo =
+                Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(result, opendId);
+            return Json(userInfo, JsonRequestBehavior.AllowGet);
         }
 
     }

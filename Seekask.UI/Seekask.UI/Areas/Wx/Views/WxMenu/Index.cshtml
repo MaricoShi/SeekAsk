@@ -1,0 +1,328 @@
+﻿@{
+    ViewBag.Title = "自定义菜单";
+}
+
+<a href="javascript:;" class="i_bn_fold"></a>
+<div class="container-fluid">
+    <div class="sa_content_header">
+        <h1>自定义菜单</h1>
+    </div>
+    <hr />
+    <div class="widget-box" id="scrollspy-example">
+        <div class="widget-title">
+            <span class="fa"><i class="fa fa-edit"></i></span>
+            <h5>自定义菜单</h5>
+        </div>
+        <div class="widget-content">
+            <div class="sa_btitle">
+                <p>你可以创建最多 3 个一级菜单，每个一级菜单下可以创建最多 5 个二级菜单。编辑中的菜单不会马上被用户看到，可以放心调试。</p>
+            </div>
+            <div class="bizmenu">
+                <div class="sidebar_primary">
+                    <div class="area_hd">
+                        <h4 class="area_t">
+                            <span class="area_t_text">菜单管理</span>
+                            <span class="area_t_opr">
+                                <button id="saveSort" class="btn btn-success">保存排序</button>
+                                <button id="addMenu" class="btn btn-success">添加菜单</button>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="MenuList" class="area_bd">
+                        <div class="nav_item_wrapper">
+                            <div class="nav_item" data-id="1">
+                                <div class="nav_bd">
+                                    <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                    <ul class="nav_opr_list">
+                                        <li data-type="add"><i class="icon icon-add"></i></li>
+                                        <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                        <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                        <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                    </ul>
+                                    <h4 id="navt1" class="nav_t">官方介绍</h4>
+                                </div>
+                            </div>
+                            <div id="navlist1" class="sub_nav_list">
+                                <div class="nav_item_wrapper">
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动1</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动2</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动3</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动4</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动5</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav_item_wrapper">
+                            <div class="nav_item" data-id="2">
+                                <div class="nav_bd">
+                                    <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                    <ul class="nav_opr_list">
+                                        <li data-type="add"><i class="icon icon-add"></i></li>
+                                        <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                        <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                        <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                    </ul>
+                                    <h4 id="navt1" class="nav_t">哈哈系</h4>
+                                </div>
+                            </div>
+                            <div id="navlist1" class="sub_nav_list">
+                                <div class="nav_item_wrapper">
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动1</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动2</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动3</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动4</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动5</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav_item_wrapper">
+                            <div class="nav_item" data-id="2">
+                                <div class="nav_bd">
+                                    <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                    <ul class="nav_opr_list">
+                                        <li data-type="add"><i class="icon icon-add"></i></li>
+                                        <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                        <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                        <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                    </ul>
+                                    <h4 id="navt1" class="nav_t">哈哈系</h4>
+                                </div>
+                            </div>
+                            <div id="navlist1" class="sub_nav_list">
+                                <div class="nav_item_wrapper">
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动1</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动2</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动3</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动4</h4>
+                                        </div>
+                                    </div>
+                                    <div class="nav_item" data-id="1">
+                                        <div class="nav_bd">
+                                            <span class="nav_icon"><i class="opr_icon16 icon2"></i></span>
+                                            <ul class="nav_opr_list">
+                                                <li data-type="add"><i class="icon icon-add"></i></li>
+                                                <li data-type="update"><i class="glyphicon glyphicon-edit"></i></li>
+                                                <li data-type="del"><i class="glyphicon glyphicon-remove "></i></li>
+                                                <li data-type="sort"><i class="opr_icon16 icon6"></i></li>
+                                            </ul>
+                                            <h4 id="navt1" class="nav_t">详情活动5</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_primary">
+                    <div class="area_hd">
+                        <h4 class="area_t">
+                            <span class="area_t_text">设置动作</span>
+                        </h4>
+                    </div>
+                    <div class="area_bd">
+                        <div class="area_tips2">
+                            你可以先添加一个菜单，然后开始为其设置响应动作
+                        </div>
+                        <div class="area_tips"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sa_btitle">
+                <p>编辑中的菜单不能直接在用户手机上生效，你需要进行发布，发布后24小时内所有的用户都将更新到新的菜单。</p>
+            </div>
+            <div class="pre_access_wrapper">
+                <button id="submitMenu" class="btn btn-success" style="padding-left:30px;padding-right:30px;">发  布</button>
+            </div>
+        </div>
+    </div>
+</div>
+

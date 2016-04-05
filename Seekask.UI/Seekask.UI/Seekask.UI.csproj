@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Wx\Controllers\WxHomeController.cs" />
+    <Compile Include="Areas\Wx\Controllers\WxMenuController.cs" />
     <Compile Include="Areas\Wx\Models\StatusBackModel.cs" />
     <Compile Include="Areas\Wx\WxAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -201,6 +202,7 @@
     <Content Include="Areas\Wx\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Wx\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Wx\Views\WxHome\AutoAdd.cshtml" />
+    <Content Include="Areas\Wx\Views\WxMenu\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Seekask.UI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

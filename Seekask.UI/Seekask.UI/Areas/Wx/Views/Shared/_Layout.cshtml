@@ -1,40 +1,98 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - SeekAsk</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/seekask.ui.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+    <!--Header-part-->
+    <div class="sa_header" style=" margin-top: -10px;">
+        <h1>
+            <a href="javascript:;" target="_blank" style="font-size:20px;">
+                <span class="cl_teal">Seek</span>Ask
+            </a>
+        </h1>
+    </div>
+    <!--close-Header-part-->
+    <!--top-Header-menu-->
+    <div class="navbar sa_user_nav">
+        <ul class="nav">
+            <li class="dropdown">
+                <a title="" href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">
+                    <i class="fa fa-globe"></i>
+                    <span class="text">&nbsp;SeekAsk平台&nbsp;</span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="">SeekAsk平台</a></li>
                 </ul>
-            </div>
-        </div>
+            </li>
+            <li>
+                <a title="系统管理" class="tip-bottom" data-original-title="系统管理" href="">
+                    <i class="fa fa-cog"></i>
+                    <span class="text">系统管理</span>
+                </a>
+            </li>
+            <li>
+                <a title="帮助中心" class="tip-bottom" data-original-title="帮助中心" href="javascript:;" target="_blank">
+                    <i class="fa fa-question-circle"></i>
+                    <span class="text">帮助中心</span>
+                </a>
+            </li>
+            <li>
+                <a title="在线客服" class="tip-bottom" data-original-title="在线客服" href="javascript:;" target="_blank">
+                    <i class="fa fa-comment"></i>
+                    <span class="text">在线客服</span>
+                </a>
+            </li>
+        </ul>
     </div>
+    <div class="navbar sa_user_nav_rg">
+        <ul class="nav">
 
-    <div class="container body-content">
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-user"></i>
+                    <span class="text">demo2&nbsp;&nbsp;旗舰版</span>
+                </a>
+            </li>
+            <li>
+                <a title="退出" class="tip-bottom" data-original-title="退出"
+                   href="javascript:confirm('确认退出系统吗?',function(){window.location.href='admin.php?c=login.logout'})">
+                    <i class="fa fa-mail-forward"></i>
+                    <span class="text">退出</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--close-top-Header-menu-->
+    <!--top-bread-crumb-->
+    <div class="sa_bread_crumb" style="left: 0px;">
+        <a href="javascript:;" class="tip-bottom" data-original-title="首页">
+            <i class="fa fa-home"></i> 首页
+        </a>
+        <i class="fa fa-angle-right"></i>
+        <a href="javascript:;" class="tip-bottom" data-original-title="公众号管理">公众号管理</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="javascript:;" class="tip-bottom current" data-original-title="公众号智能绑定">公众号智能绑定</a>
+    </div>
+    <div class="sa_content" style="margin-left: 0px;">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/seekask.ui.js"></script>
+    <script src="~/Scripts/jquery.md5.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -11,6 +11,7 @@ namespace Seekask.UI.Controllers
     {
         public ActionResult Index()
         {
+            return Redirect("~/Wx/WxMenu/Index");
             return View();
         }
 

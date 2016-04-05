@@ -108,6 +108,10 @@ input[type=checkbox].ace+.lbl i.fa-check-square-o { color: #32a3ce; }
 .i_bn_fold { background-image: url("Images/icon.png?v=20151124"); background-repeat: no-repeat; background-position: -269px 0; overflow: hidden; width: 12px; height: 78px; position: absolute; left: 0; top: 50%; cursor: pointer; text-indent: -1000em; margin-top: -40px; }
 .i_bn_fold:hover { background-position: -269px -87px; }
 
+/*提示性文字*/
+.sa_btitle{ background: #41BEDD; padding: 5px 0px; color: #FFF; }
+.sa_btitle p{ line-height: 24px; padding-left: 10px; margin: 0;}
+
 /* slimScrollDiv */
 .slimScrollDiv { position: relative; overflow: hidden; height: 100%; }
 .slimScrollDiv .slimScrollBar { display: none; background-color: rgb(255, 255, 255); width: 7px; position: absolute; top: 0px; opacity: 0.4; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 0px; height: 361px; background-position: initial initial; background-repeat: initial initial; }
@@ -248,6 +252,63 @@ input[type=checkbox].ace+.lbl i.fa-check-square-o { color: #32a3ce; }
 .nopadding { padding: 0 !important; }
 .nopadding .table { margin-bottom: 0; }
 .nopadding .table-bordered { border: 0; }
+
+
+
+/*自定义菜单*/
+.bizmenu{ height: 100%; min-height: 385px;  overflow: hidden;  border: 1px solid #CCCCCC; margin:15px 0px; color: #000;}
+.bizmenu_edit_area { padding: 20px 20px 0;}
+.bizmenu_edit_area h4 { font-size: 22px; font-weight: 400; padding-bottom: 4px; }
+.bizmenu_edit_area p { color: #545454; font-size: 14px; }
+.pre_access_wrapper{ padding: 20px 0px 5px 0px; }
+.sidebar_primary { border-right: 1px solid #CDCDCD; margin-bottom: -999em; padding-bottom: 999em; width: 280px; float: left;}
+.main_primary { min-height: 385px; overflow: hidden; }
+.area_hd { background-color: #E5E4E4; padding-left: 12px; padding-right: 12px; }
+.area_t { font-weight: 400; line-height: 40px; margin: 0;}
+.area_t_text{ font-size: 14px; }
+.area_t_opr { float: right; text-align: right; }
+.area_bd{ padding-bottom: 40px;}
+
+
+.nav_item_wrapper{ border-bottom: 1px solid #CCCCCC;}
+.nav_item { padding: 4px 12px; }
+.nav_item:hover{ background:  #c5deab ;}
+.nav_bd { line-height: 2; overflow: hidden;}
+.nav_icon { float: left; margin-right: 4px; padding-top: 1px;}
+.nav_t { font-size: 14px; font-weight: 400; overflow: hidden; cursor: pointer; margin: 0; line-height: 28px;  }
+.opr_icon16 { background: url("../images/icon16_opr.png") no-repeat; display: inline-block; height: 16px; vertical-align: middle; width: 16px;}
+.icon1 { background-position: 0 -16px;}
+.icon2 { background-position: 0 0;}
+.icon3 { background-position: -16px -32px;}
+.icon4 { background-position: -16px -48px;}
+.icon5 { background-position: -16px -64px;}
+.icon6 { background-position: 0px -80px;}
+.icon8 { background-position: -32px 0px;}
+.icon9 { background-position: -32px -16px;}
+.nav_opr_list { float: right; margin: 0; display: none; padding-top: 3px;}
+.nav_opr_list li{ float: left; margin-left: 6px; margin-right: 6px; cursor: pointer;}
+.sub_nav_list .nav_item_wrapper{ border-bottom-width: 0;}
+.sub_nav_list .nav_item { padding-left: 30px;}
+.area_tips{ margin: 20px; font-size: 14px; display: none; }
+.area_tips2{ padding-top: 40px; text-align: center; font-size: 14px;}
+.opr_icon10 { background: url("../images/icon10_add_on.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); display: inline-block; height: 10px; vertical-align: middle; width: 10px;}
+.icon7 { background-position: 0 0;}
+.nav_item.cur { background-color: #6BB05E; background-image: linear-gradient(to bottom, #79BC6E 0px, #61A854 100%);}
+.nav_item.cur .nav_t{ color: #FFF;}
+.nav_item.cur .icon7 { background-position: -10px 0;}
+.action_area { padding: 0 20px 20px; }
+.action_type { padding-top: 10px; text-align: center; display: none;}
+.action_btn { color: #333333; cursor: pointer; display: inline-block; margin: 0 40px; }
+.action_icon { background: url("../images/icon144_action_type.png") no-repeat; display: inline-block; height: 144px; width: 144px;}
+.action_icon.send_icon { background-position: 0 0; }
+.action_icon.url_icon { background-position: 0 -144px;}
+.action_btn_text { display: block; font-weight: 400;}
+.layerMenu{ padding: 0 30px;}
+.layerMenu p{ margin: 0; padding-top: 10px;}
+.msg_sender{display: none;}
+.controls textarea{ width: 480px; resize: none; border:1px solid #cdcdcd; height: 80px;}
+.msg_url{ display: none;}
+.msg_url input{width: 400px;}
 
 
 
