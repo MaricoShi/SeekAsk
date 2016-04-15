@@ -1,12 +1,12 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top:60px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.content-inner {
+    max-width:1200px;
+    margin:0px auto;
+    padding-top:10px!important;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,8 +17,16 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+.full-width{width:100%;}
+.panel-center { margin:0px auto; box-shadow: 1px 2px 2px hsla(0,0%,50%,.4); padding-bottom:60px;}
+.panel-center .form-group{ margin:0px auto; max-width:350px; margin-bottom:30px;}
+.panel-title { color:#4a99e2; font-size:26px; margin:25px auto; margin-bottom:35px; }
+
+@media (min-width: 1200px)
+{
+    .panel-center { width: 85%; }
+    .content-inner { padding-top:40px!important; padding:40px 30px 30px 30px; }
 }
+
+

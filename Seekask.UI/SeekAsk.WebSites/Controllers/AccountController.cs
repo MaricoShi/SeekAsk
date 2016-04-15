@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace SeekAsk.WebSites.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
-        public ActionResult Index()
+        // GET: Account
+        public ActionResult Login()
         {
             return View();
         }
-
     }
 }
