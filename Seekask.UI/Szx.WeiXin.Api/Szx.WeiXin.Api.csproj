@@ -59,7 +59,12 @@
     <Compile Include="Api\Cryptography.cs" />
     <Compile Include="Api\Sample.cs" />
     <Compile Include="Api\WXBizMsgCrypt.cs" />
+    <Compile Include="Domain\Cracker.cs" />
+    <Compile Include="Domain\PhoneUtil.cs" />
+    <Compile Include="Domain\PhoneUtil2.cs" />
     <Compile Include="Domain\SmartBindUtil.cs" />
+    <Compile Include="Domain\UnCodeBase.cs" />
+    <Compile Include="Domain\UnCodeYiDong.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="IRequest.cs" />
     <Compile Include="LocationService.cs" />

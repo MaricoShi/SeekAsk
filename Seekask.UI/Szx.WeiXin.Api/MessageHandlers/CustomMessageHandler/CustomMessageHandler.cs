@@ -112,6 +112,21 @@ namespace Szx.WeiXin.Api.MessageHandlers.CustomMessageHandler
             {
 
             }
+            else if (requestMessage.Content == "话费充值")
+            {
+                var openResponseMessage = requestMessage.CreateResponseMessage<ResponseMessageNews>();
+                openResponseMessage.Articles.Add(new Article()
+                {
+                    Title = "移动用户手机话费充值",
+                    Description = @"点击进入充值页面。
+
+暂时只支持移动用户手机话费充值，当前活动提供面额为50元的话费充值，数量有限，赶快去抢购吧！
+
+充值完成后，您可以查询充值记录。",
+                    Url = "http://phone.seekask.cn"
+                });
+                return openResponseMessage;
+            }
             else if (requestMessage.Content == "约束")
             {
                 responseMessage.Content =
