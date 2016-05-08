@@ -51,10 +51,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Mapping\Szx_Sys_LogMap.cs" />
+    <Compile Include="Models\Mapping\S_Recharge_BillsMap.cs" />
+    <Compile Include="Models\Mapping\S_Recharge_CardListMap.cs" />
+    <Compile Include="Models\Mapping\S_Recharge_DebitMap.cs" />
+    <Compile Include="Models\Mapping\S_Recharge_OrderMap.cs" />
+    <Compile Include="Models\Mapping\S_Recharge_UseTicketMap.cs" />
+    <Compile Include="Models\Mapping\S_Sys_UserMap.cs" />
     <Compile Include="Models\Mapping\Weixin_Msg_RequestMap.cs" />
     <Compile Include="Models\Mapping\Weixin_Sys_InfoMap.cs" />
     <Compile Include="Models\SeekAskContext.cs" />
     <Compile Include="Models\Szx_Sys_Log.cs" />
+    <Compile Include="Models\S_Recharge_Bills.cs" />
+    <Compile Include="Models\S_Recharge_CardList.cs" />
+    <Compile Include="Models\S_Recharge_Debit.cs" />
+    <Compile Include="Models\S_Recharge_Order.cs" />
+    <Compile Include="Models\S_Recharge_UseTicket.cs" />
+    <Compile Include="Models\S_Sys_User.cs" />
     <Compile Include="Models\Weixin_Msg_Request.cs" />
     <Compile Include="Models\Weixin_Sys_Info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
