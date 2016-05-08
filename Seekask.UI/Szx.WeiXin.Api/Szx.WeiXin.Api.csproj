@@ -59,6 +59,7 @@
     <Compile Include="Api\Cryptography.cs" />
     <Compile Include="Api\Sample.cs" />
     <Compile Include="Api\WXBizMsgCrypt.cs" />
+    <Compile Include="DecryptEncrypt.cs" />
     <Compile Include="Domain\Cracker.cs" />
     <Compile Include="Domain\PhoneUtil.cs" />
     <Compile Include="Domain\PhoneUtil2.cs" />
